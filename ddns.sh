@@ -2,11 +2,9 @@
 
 # Step 1: Fill in EMAIL, AUTH, ZONE_ID. Your API token is here: https://www.cloudflare.com/a/account/my-account
 #         Make sure the token is the Global token, or has these permissions: #zone:read, #dns_record:read, #dns_records:edit
-# Step 2: Create an A record on Cloudflare with the subdomain you chose
-#         This step is optional, but will save you 2 requests every time you this script
-# Step 3: Put arguments in the function put_dns(email, record_id)
-# Step 4: Run "./ddns.sh". It should tell you that record was updated.
-# Step 5: Run it every hour with cron.
+# Step 2: Put arguments in the function put_dns(email, record_id)
+# Step 3: Run "./ddns.sh". It should tell you that record was updated.
+# Step 4: Run it every hour with cron.
 #         0 * * * * /path/to/ddns.sh
 
 
