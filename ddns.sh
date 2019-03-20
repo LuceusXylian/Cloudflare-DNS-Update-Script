@@ -29,7 +29,7 @@ function put_dns() {
   echo ""
 }
 
-put_dns "domain.org" "record_id
+put_dns "domain.org" "record_id"
 
 
 exit 0
