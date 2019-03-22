@@ -19,12 +19,13 @@ echo $EXTERNAL_IP
 function put_dns() {
   local domain="$1"
   local record_id="$2"
+  local proxied="$3"
 
   curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$record_id" \
      -H "X-Auth-Email: $EMAIL" \
      -H "X-Auth-Key: $AUTH" \
      -H "Content-Type: application/json" \
-     --data '{"type":"A","name":'\"$domain\"',"content":'\"$EXTERNAL_IP\"',"ttl":120,"proxied":false}'
+     --data '{"type":"A","name":'\"$domain\"',"content":'\"$EXTERNAL_IP\"',"ttl":120,"proxied":'$proxied'}'
 
   echo ""
 }
