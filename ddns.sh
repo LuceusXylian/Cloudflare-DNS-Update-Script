@@ -13,21 +13,21 @@ AUTH='auth'
 ZONE_ID='zone_id'
 
 
-EXTERNAL_IP=$(curl -s https://api.ipify.org)
-echo $EXTERNAL_IP
+EXTERNAL_IP=$(curl -s https://api.ipify.org > /dev/null)
+#echo $EXTERNAL_IP
 
 function put_dns() {
   local domain="$1"
   local record_id="$2"
   local proxied="$3"
 
-  curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$record_id" \
+  curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$record_id" \
      -H "X-Auth-Email: $EMAIL" \
      -H "X-Auth-Key: $AUTH" \
      -H "Content-Type: application/json" \
-     --data '{"type":"A","name":'\"$domain\"',"content":'\"$EXTERNAL_IP\"',"ttl":120,"proxied":'$proxied'}'
+     --data '{"type":"A","name":'\"$domain\"',"content":'\"$EXTERNAL_IP\"',"ttl":120,"proxied":'$proxied'}' > /dev/null
 
-  echo ""
+  #echo ""
 }
 
 put_dns "domain.org" "record_id"
