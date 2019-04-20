@@ -13,7 +13,7 @@ AUTH='auth'
 ZONE_ID='zone_id'
 
 
-EXTERNAL_IP=$(curl https://api.ipify.org)
+EXTERNAL_IP=$(curl -s https://api.ipify.org)
 #echo $EXTERNAL_IP
 
 function put_dns() {
@@ -30,7 +30,7 @@ function put_dns() {
   #echo ""
 }
 
-put_dns "domain.org" "record_id" true
+put_dns "domain.org" "record_id" "true"
 
 
 exit 0
