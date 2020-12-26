@@ -13,6 +13,13 @@ AUTH='auth'
 ZONE_ID='zone_id'
 
 
+### GET RECORD_ID SCRIPT
+# curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+#     -H "X-Auth-Email: $EMAIL" \
+#     -H "X-Auth-Key: $AUTH" \
+#     -H "Content-Type: application/json"
+###
+
 EXTERNAL_IP=$(curl -s https://api.ipify.org)
 #echo $EXTERNAL_IP
 
